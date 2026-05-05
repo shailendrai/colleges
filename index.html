@@ -1,967 +1,671 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap");
-
-:root {
-    --primary-color: #fde000;
-    --secondary: #01015f;
-    --white: #fff;
-    --black: #141414;
-    --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-* {
-    font-family: 'DM Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    text-transform: none;
-    transition: 0.2s ease;
-}
-
-html {
-    font-size: 62.5%;
-    overflow-x: hidden;
-    scroll-padding-top: 9rem;
-    scroll-behavior: smooth;
-}
-
-
-html::-webkit-scrollbar {
-    width: 1rem;
-}
-
-html::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-html::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-}
-
-section {
-    padding: 5rem 7%;
-}
-
-
-
-.heading {
-    position: relative;
-    color: black;
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .4rem;
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.heading::after {
-    content: url('../images/separator.svg');
-    display: block;
-    width: 10rem;
-    margin-inline: auto;
-    margin-top: -1rem;
-}
-
-.btn {
-    position: relative;
-    display: inline-block;
-    margin-top: 1rem;
-    color: var(--primary-color);
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    max-width: max-content;
-    border: .1rem solid var(--primary-color);
-    background: var(--secondary);
-    padding: 1.2rem 4.5rem;
-    overflow: hidden;
-    z-index: 1;
-    border-radius: .5rem;
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200%;
-    height: 200%;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    transition: 500ms ease;
-    z-index: -1;
-}
-
-.btn .text {
-    transition: 250ms ease;
-}
-
-.btn .text-2 {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: max-content;
-    color: var(--secondary);
-}
-
-.btn:is(:hover, :focus-visible)::before {
-    bottom: -50%;
-}
-
-.btn:is(:hover, :focus-visible) .text-1 {
-    transform: translateY(-4rem);
-}
-
-.btn:is(:hover, :focus-visible) .text-2 {
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.shine {
-    position: relative;
-}
-
-.shine::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background-image: linear-gradient(to right, transparent 0%, #fff6 100%);
-    transform: skewX(-0.08turn) translateX(-180%);
-}
-
-.shine:is(:hover, :focus-within)::after {
-    transform: skewX(-0.08turn) translateX(275%);
-    transition: 1000ms ease;
-}
-
-/* header */
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: var(--primary-color);
-    box-shadow: var(--box-shadow);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 9%;
-}
-
-.header .logo {
-    font-size: 2.5rem;
-    font-weight: bolder;
-    color: var(--black);
-}
-
-.header .logo i {
-    color: #ef0b0b;
-    padding-right: .5rem;
-}
-
-.header .navbar a {
-    font-size: 1.7rem;
-    color: var(--black);
-    margin: 0 1rem;
-    padding-block: 1rem;
-}
-
-.header .navbar a:hover {
-    /* color: var(--secondary);? */
-    color: #ff0d0d;
-}
-
-.header .navbar .hover-underline {
-    position: relative;
-    max-width: max-content;
-}
-
-.header .navbar .hover-underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: .5rem;
-    border-block: .1rem solid var(--primary-color);
-    transform: scaleX(0.2);
-    opacity: 0;
-    transition: 500ms ease;
-}
-
-.header .navbar .hover-underline:is(:hover, :focus-visible)::after {
-    transform: scaleX(1);
-    opacity: 1;
-}
-
-.header .icons div {
-    font-size: 2.5rem;
-    margin-left: 1.7rem;
-    color: var(--black);
-    cursor: pointer;
-}
-
-.header .icons div:hover {
-    color: red;
-}
-
-
-.header .login-form {
-    position: absolute;
-    top: 115%;
-    right: -105%;
-    background: var(--white);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    width: 35rem;
-    padding: 2rem;
-}
-
-.header .login-form.active {
-    right: 2rem;
-    transition: .4s linear;
-}
-
-.header .login-form h3 {
-    font-size: 2.2rem;
-    color: var(--black);
-    text-align: center;
-    margin-bottom: .7rem;
-}
-
-.header .login-form .box {
-    font-size: 1.5rem;
-    margin: .7rem 0;
-    border: .1rem solid rgba(0, 0, 0, 0.1);
-    padding: 1rem 1.2rem;
-    color: var(--black);
-    text-transform: none;
-    width: 100%;
-}
-
-.header .login-form .remember {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    margin: .7rem 0;
-}
-
-.header .login-form .remember label {
-    font-size: 1.5rem;
-    color: var(--black);
-    cursor: pointer;
-}
-
-/* home */
-
-.home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: url(image/home1.png) no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.home::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.home .content {
-    max-width: 50rem;
-
-    position: relative;
-    z-index: 1;
-}
-
-.home .content h3 {
-    font-size: 5rem;
-    color: var(--white);
-    line-height: 1.2;
-}
-
-.home .content p {
-    font-size: 1.5rem;
-    line-height: 2;
-    color: var(--white);
-    padding: 1rem 0;
-
-}
-
-/* ends */
-
-/* about */
-
-.about .container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.about .container .about-image {
-    position: relative;
-    flex: 1 1 40rem;
-}
-
-.about .container .about-image img {
-    width: 80%;
-}
-
-.about .container .about-image .about-img {
-    position: absolute;
-    bottom: -10rem;
-    right: -1rem;
-    width: 25rem;
-    padding-block: 5rem;
-}
-
-.about .container .about-content {
-    flex: 1 1 50rem;
-    padding-left: 6rem;
-    padding-top: 8rem;
-}
-
-.about .container .about-content h3 {
-    font-size: 3rem;
-    color: var(--primary-color);
-}
-
-.about .container .about-content p {
-    font-size: 1.6rem;
-    color: #444;
-    padding: 1rem 0;
-    line-height: 1.8;
-}
-
-/* ends */
-
-/* subjects */
-
-.subjects .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 2rem;
-}
-
-.subjects .box-container .box {
-    padding: 3rem 2rem;
-    text-align: center;
-    border: .1rem solid var(--primary-color);
-    background: var(--secondary);
-    cursor: pointer;
-}
-
-.subjects .box-container .box:hover {
-    background: var(--primary-color);
-}
-
-.subjects .box-container .box img {
-    height: 10rem;
-    margin-bottom: .7rem;
-}
-
-.subjects .box-container .box h3 {
-    font-size: 1.7rem;
-    color: #fde000;
-    padding: .5rem 0;
-    text-transform: capitalize;
-}
-
-.subjects .box-container .box:hover h3 {
-    color: black;
-}
-
-.subjects .box-container .box p {
-    font-size: 1.5rem;
-    line-height: 2;
-    color: white;
-}
-
-.subjects .box-container .box:hover p {
-    color: black;
-}
-
-/* end */
-
-/* courses */
-
-.courses .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap: 2rem;
-}
-
-.courses .box-container .box .image {
-    height: 25rem;
-    overflow: hidden;
-    position: relative;
-}
-
-.courses .box-container .box .image img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.courses .box-container .box:hover .image img {
-    transform: scale(1.1);
-}
-
-.courses .box-container .box .image h3 {
-    font-size: 1.5rem;
-    color: #444;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: .5rem 1.5rem;
-    background: var(--white);
-}
-
-.courses .box-container .box .content {
-    padding: 2rem;
-    position: relative;
-    border: 0.1rem solid var(--primary-color);
-}
-
-.courses .box-container .box .content h4 {
-    position: absolute;
-    background: var(--primary-color);
-    color: var(--secondary);
-    top: -3rem;
-    right: 1.5rem;
-    width: 6rem;
-    height: 6rem;
-    line-height: 6rem;
-    text-align: center;
-    font-size: 1.4rem;
-    border-radius: 50%;
-}
-
-.courses .box-container .box .content p {
-    font-size: 1.4rem;
-    color: #444;
-    line-height: 2;
-}
-
-.courses .box-container .box .content h3 {
-    font-size: 2rem;
-    color: #444;
-}
-
-.courses .box-container .box .content .stars {
-    padding: 1rem 0;
-}
-
-.courses .box-container .box .content .stars i {
-    font-size: 1.7rem;
-    color: var(--primary-color);
-}
-
-.courses .box-container .box .content .stars span {
-    font-size: 1.4rem;
-    color: #777;
-    margin-left: .5rem;
-}
-
-.courses .box-container .box .content .icons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 0.1rem solid var(--primary-color);
-}
-
-.courses .box-container .box .content .icons span {
-    font-size: 1.5rem;
-    color: #444;
-}
-
-.courses .box-container .box .content .icons span i {
-    color: var(--primary-color);
-    padding-right: .5rem;
-}
-
-/* ends */
-
-/* teacher */
-
-.teacher .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 2rem;
-}
-
-.teacher .box-container .box {
-    background: var(--white);
-    box-shadow: var(--box-shadow);
-    border-radius: .5rem;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
-.teacher .box-container .box .image {
-    position: relative;
-    overflow: hidden;
-}
-
-.teacher .box-container .box .image img {
-    background: var(--secondary);
-    width: 100%;
-}
-
-.teacher .box-container .box:hover .image .share {
-    bottom: 0;
-}
-
-.teacher .box-container .box .image .share {
-    position: absolute;
-    bottom: -10rem;
-    left: 0;
-    right: 0;
-    padding: 2rem;
-}
-
-.teacher .box-container .box .image .share a {
-    height: 4rem;
-    width: 4rem;
-    line-height: 4rem;
-    font-size: 2rem;
-    margin: 0 1rem;
-    color: var(--secondary);
-    background: var(--primary-color);
-    border-radius: .5rem;
-}
-
-.teacher .box-container .box .image .share a:hover {
-    color: var(--primary-color);
-    background: var(--secondary);
-}
-
-.teacher .box-container .box .content {
-    padding: 2rem;
-    padding-top: 1rem;
-    align-items: center;
-}
-
-.teacher .box-container .box .content h3 {
-    font-size: 2rem;
-    color: var(--black);
-}
-
-.teacher .box-container .box .content span {
-    font-size: 1.5rem;
-    line-height: 2;
-    color: #777;
-}
-
-/* ends */
-
-/* review */
-
-.review .slide {
-    padding: 1.5rem;
-    box-shadow: var(--box-shadow);
-    border: 0.1rem solid rgba(0, 0, 0, 0.1);
-    border-radius: 2rem;
-    position: relative;
-}
-
-.review .slide p {
-    font-size: 1.5rem;
-    text-align: center;
-    padding-bottom: .5rem;
-    line-height: 1.8;
-    color: #444;
-}
-
-.review .slide .wrapper {
-    display: flex;
-    justify-content: center;
-    gap: .3rem;
-}
-
-.review .slide .wrapper .separator {
-    width: .8rem;
-    height: .8rem;
-    border: .1rem solid var(--primary-color);
-    transform: rotate(45deg);
-    animation: rotate360 15s linear infinite;
-}
-
-@keyframes rotate360 {
-    0% {
-        transform: rotate(0);
-    }
-
-    100% {
-        transform: rotate(1turn);
-    }
-}
-
-.review .slide .fa-quote-right {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-    font-size: 6rem;
-    color: var(--secondary);
-}
-
-.review .slide .user {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1rem 1.5rem;
-    border-radius: .5rem;
-}
-
-.review .slide .user img {
-    height: 7rem;
-    width: 7rem;
-    border-radius: 15%;
-    object-fit: cover;
-    border: .1rem solid var(--primary-color);
-    padding: .5rem;
-}
-
-.review .slide .user h3 {
-    font-size: 2rem;
-    color: var(--black);
-    padding-bottom: .5rem;
-}
-
-.review .slide .user .stars i {
-    font-size: 1.3rem;
-    color: var(--primary-color);
-}
-
-/* ends */
-
-/* faqs start */
-.faqs .container {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 15px;
-}
-
-.faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.ques {
-    background-color: #cac70c;
-    padding: 20px 30px;
-    font-size: 1.6rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    gap: 10px;
-    transition: all 0.3s ease-in-out;
-}
-
-.ques:hover {
-    background-color: #777;
-    transform: translateY(-2px);
-}
-
-.ans {
-    max-height: 0;
-    overflow: hidden;
-    width: 100%;
-    transition: max-height .4s ease;
-}
-
-.faq.active .ans {
-    max-height: 500px;
-}
-
-.ans p {
-    background-color: #444;
-    padding: 30px;
-    font-size: 1.6rem;
-    border-top: 1px solid var(--black);
-}
-
-/* ends */
-
-/* contact */
-
-.contact .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
-}
-
-.contact .row .image {
-    flex: 1 1 40rem;
-}
-
-.contact .row .image img {
-    width: 100%;
-}
-
-.contact .row form {
-    flex: 1 1 40rem;
-    border: 0.1rem solid var(--primary-color);
-    padding: 2rem;
-}
-
-.contact .row form h3 {
-    font-size: 2.5rem;
-    color: #444;
-    padding-bottom: 1rem;
-}
-
-.contact .row form .box {
-    width: 100%;
-    font-size: 1.6rem;
-    padding: 1.2rem 1.4rem;
-    border: .1rem solid var(--primary-color);
-    margin: .7rem 0;
-}
-
-.contact .row form .box:focus {
-    color: var(--primary-color);
-}
-
-.contact .row form textarea {
-    height: 15rem;
-    resize: none;
-}
-
-
-
-
-.form-container {
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-}
-
-.form-container iframe {
-    width: 100%;
-    height: 800px;
-    border: none;
-}
-
-
-
-/* WhatsApp Box Center */
-.whatsapp-box {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Button Style */
-.whatsapp-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background: #25D366;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-/* Icon spacing */
-.whatsapp-btn i {
-    margin-right: 8px;
-}
-
-/* Hover effect */
-.whatsapp-btn:hover {
-    background: #1ebe5d;
-    transform: translateY(-3px);
-}
-
-/* ends */
-
-/* footer */
-
-.footer {
-    background: var(--secondary);
-    text-align: center;
-}
-
-.footer .box-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 2rem;
-}
-
-.footer .box-container .box h3 {
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    padding: 1rem 0;
-}
-
-.footer .box-container .box p {
-    font-size: 1.5rem;
-    color: var(--white);
-    line-height: 2;
-    padding: 1rem 0;
-}
-
-.footer .box-container .box .share {
-    margin-top: 1rem;
-}
-
-.footer .box-container .box .share a {
-    height: 4.5rem;
-    width: 4.5rem;
-    line-height: 4.5rem;
-    border-radius: 10%;
-    font-size: 1.7rem;
-    border: .1rem solid var(--primary-color);
-    color: var(--primary-color);
-    margin-right: .3rem;
-    text-align: center;
-}
-
-.footer .box-container .box .share a:hover {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
-.footer .box-container .box .link {
-    font-size: 1.7rem;
-    line-height: 2;
-    color: var(--white);
-    padding: .5rem 0;
-    display: block;
-}
-
-.footer .box-container .box .link:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
-.footer .credit {
-    font-size: 2rem;
-    margin-top: 3rem;
-    padding-top: 3rem;
-    text-align: center;
-    color: var(--white);
-    border-top: .1rem solid var(--primary-color);
-}
-
-.footer .credit span {
-    color: var(--primary-color);
-}
-
-
-/* ===== MOBILE RESPONSIVE FINAL CLEAN ===== */
-
-#menu-btn {
-    display: none;
-}
-
-/* Tablet */
-@media (max-width: 991px) {
-    html {
-        font-size: 55%;
-    }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-
-    /* Menu icon */
-    #menu-btn {
-        display: inline-block;
-        font-size: 2rem;
-        cursor: pointer;
-    }
-
-    /* Navbar */
-    .header .navbar {
-        position: absolute;
-        top: 100%;
-        right: -100%;
-        width: 100%;
-        background: var(--white);
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transition: 0.3s ease;
-    }
-
-    .header .navbar.active {
-        right: 0;
-    }
-
-    .header .navbar a {
-        display: block;
-        margin: 1.5rem 0;
-        font-size: 2rem;
-    }
-
-    /* Login form */
-    .header .login-form {
-        width: 90%;
-        right: -100%;
-    }
-
-    .header .login-form.active {
-        right: 5%;
-    }
-
-    /* Home */
-    .home .content h3 {
-        font-size: 3rem;
-    }
-
-    .home .content p {
-        font-size: 1.4rem;
-    }
-
-    /* About */
-    .about .container {
-        flex-direction: column;
-    }
-
-    .about .container .about-content {
-        padding-left: 0;
-        padding-top: 2rem;
-    }
-
-    .about-image img {
-        width: 100%;
-        height: auto;
-    }
-}
-
-/* Small devices */
-@media (max-width: 450px) {
-    html {
-        font-size: 50%;
-    }
-}
+<!doctype html>
+<html lang="en-IN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome (ONLY ONE VERSION) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Home Tuition in Patna | Decent Learner</title>
+</head>
+
+<body>
+    <!-- header section starts -->
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-book"></i> Decent Learner</a>
+        <nav class="navbar">
+            <a href="#home" class="hover-underline">home</a>
+            <a href="#about" class="hover-underline">about</a>
+            <a href="#class" class="hover-underline">class</a>
+            <a href="#teacher" class="hover-underline">teacher</a>
+            <a href="#review" class="hover-underline">review</a>
+            <a href="#faqs" class="hover-underline">faqs</a>
+            <a href="#contact" class="hover-underline">contact</a>
+        </nav>
+        <div class="icons">
+            <div id="login-btn" class="fas fa-user"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+        <!-- login form -->
+        <form action="login.php" method="POST" class="login-form">
+            <h3>Login Form</h3>
+            <input type="email" name="email" placeholder="Enter your email" class="box" required />
+            <input type="password" name="password" placeholder="Enter your password" class="box" required />
+            <div class="remember">
+                <input type="checkbox" id="remember" />
+                <label for="remember">Remember me</label>
+            </div>
+            <button type="submit" class="btn">
+                <span class="text text-1">Login Now</span>
+                <span class="text text-2" aria-hidden="true">Login Now</span>
+            </button>
+        </form>
+    </header>
+    <!-- header section ends -->
+    <!-- home section starts-->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Best Place for Students and Tuition Teachers</h3>
+            <p>
+                Give your child an experienced coach and personalized guidance with a
+                comfortable environment.
+            </p>
+            <a href="#" class="btn">
+                <span class="text text-1">learn more</span>
+                <span class="text text-2" aria-hidden="true">learn more</span>
+            </a>
+        </div>
+    </section>
+    <!-- home section ends -->
+    <!-- about section starts -->
+    <section class="about" id="about">
+        <h1 class="heading">about us</h1>
+        <div class="container">
+            <figure class="about-image">
+                <img src="image/about.jpg" alt="" height="500" />
+                <img src="image/about-1.jpg" alt="" class="about-img" />
+            </figure>
+            <div class="about-content">
+                <h3>5 years of experience</h3>
+                <p>
+                    Perfect Tutor connects students with expert teachers in a
+                    specialized one-to-one home tuition to help them understand tough
+                    subjects and improve their grades. Whether students need assistance
+                    with a complex subject or want to enhance their knowledge.
+                </p>
+                <p>
+                    student-focused learning platform that precisely matches the needs
+                    of students. We have over five years of experience recruiting top
+                    instructors for home tuitions.
+                </p>
+                <a href="#" class="btn">
+                    <span class="text text-1">read more</span>
+                    <span class="text text-2" aria-hidden="true">read more</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- about section ends -->
+    <!-- subjects section starts -->
+    <section class="subjects">
+        <h1 class="heading">our popular subjects</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="image/science.jpg" alt="" />
+                <h3>science</h3>
+                <p>science tuition class 1 to 8</p>
+            </div>
+            <div class="box">
+                <img src="image/mathh.jpg" alt="" />
+                <h3>mathematics</h3>
+                <p>math tuition class 1 to 8</p>
+            </div>
+            <div class="box">
+                <img src="image/englishp.jpg" alt="" />
+                <h3>English</h3>
+                <p>English tuition class 1 to 8</p>
+            </div>
+            <div class="box">
+                <img src="image/socaile2.jpeg" alt="" />
+                <h3>social science</h3>
+                <p>social science tuition class 1 to 8</p>
+            </div>
+        </div>
+    </section>
+    <!-- subject section ends -->
+    <!-- class section starts -->
+    <section class="courses" id="class">
+        <h1 class="heading">Our Popular Home Tuition Classes</h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/course-6.jpg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class I</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/claa1.jpg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class II</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/claa2.jpg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class III</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/clas4.jpg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class IV</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/claas5.avif" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class V</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/class7.jpg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class VI</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/class8.jpeg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class VII</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image shine">
+                    <img src="image/course-3.jpg" alt="" />
+                    <h3>basic</h3>
+                </div>
+                <div class="content">
+                    <h4>₹500/hour</h4>
+                    <p>updated 25/09/2024</p>
+                    <h3>class VIII</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(785)</span>
+                    </div>
+                    <div class="icons">
+                        <span><i class="far fa-bookmark"></i> All subject</span>
+                        <span><i class="far fa-clock"></i> monday to saturday</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- class section ends -->
+    <!-- teacher section starts -->
+    <section class="teacher" id="teacher">
+        <h1 class="heading">our expert teacher</h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="image/td2.jpg" alt="" />
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Pragya gupta</h3>
+                    <span>UGC , 3 Yrs Experience</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="image/td.jpg" alt="" />
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Dharmendra Yadav</h3>
+                    <span>B.Tech ,15 Yrs Experience</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="image/td3.jpg" alt="" />
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Shamsher Sir</h3>
+                    <span>M.Sc in Mathematics ,20 Yrs Experience</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="image/review-6.png" alt="" />
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Smriti Saini</h3>
+                    <span>B.A and LLB ,3 Yrs Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- teacher section ends -->
+    <!-- review section starts -->
+    <section class="review" id="review">
+        <h1 class="heading">our students review</h1>
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <p>"Best home tuition teacher in Dwarka. Keep up d good work..."</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="image/ST4.png" alt="" />
+                        <div class="user-info">
+                            <h3>Shivam Jha</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <p>
+                        "One of the best home tuition in Dwarka, and Delhi NCR. They..."
+                    </p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="image/ST5.png" alt="" />
+                        <div class="user-info">
+                            <h3>Dev Narayan Suman</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <p>
+                        "I am very happy to have found a good math teacher so very..."
+                    </p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="image/ST6.png" alt="" />
+                        <div class="user-info">
+                            <h3>Ganesh Kumar</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <p>
+                        "Best home tutors for IIT Maths in Noida. They are really best
+                        i...".
+                    </p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="image/ST5.png" alt="" />
+                        <div class="user-info">
+                            <h3>Mohit Jangra</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <p>
+                        I used to struggle with maths. After getting a home tutor I am
+                        doing maths very easily and topped my class.
+                    </p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="image/ST4.png" alt="" />
+                        <div class="user-info">
+                            <h3>Jitendra Pal</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slide">
+                    <p>
+                        We found a caring and humble home tutor for our daughter. She
+                        likes studying with the home tutor.
+                    </p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="image/ST6.png" alt="" />
+                        <div class="user-info">
+                            <h3>Pawan Rai</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i> <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- review section ends -->
+    <!-- faqs section starts -->
+    <section class="faqs" id="faqs">
+        <div class="container">
+            <h1 class="heading">Frequently Asked Questions</h1>
+            <div class="faq-list">
+                <div class="faq">
+                    <div class="ques">
+                        <p>What is Home Tutor Site ?</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            It is an online platform helping students and tutors find each
+                            other.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <div class="ques">
+                        <p>Can I post my learning needs for free ?</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            Yes, you can post your learning needs for free by registering as
+                            a free member.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <div class="ques">
+                        <p>
+                            Can I contact the tutors in our area whose skills match my
+                            needs?
+                        </p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            Yes, you can contact our tutors you like by taking our premium
+                            membership
+                        </p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <div class="ques">
+                        <p>What are contact credits?</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            Contact credits are the keys to unlock the contact details. If
+                            you are a tutor looking for students, you can use contact
+                            credits to see the contact details of student/parent who posted
+                            the tuition needs
+                        </p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <div class="ques">
+                        <p>Do you have any money back guarantee?</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            Yes, we offer a money back guarantee if you did not find
+                            tutor/tuition in your plan period..
+                        </p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <div class="ques">
+                        <p>How do I pay my tuition fee?</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            You have to pay the fee to the tutor. 100% of the fee is for
+                            tutors and we do not take any commission from the tuition fee.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq">
+                    <div class="ques">
+                        <p>Do I need to pay any commission from my tuition fee?</p>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="ans">
+                        <p>No. We do not ask for any commission from tuition fee.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog section ends -->
+    <!-- contact section starts -->
+    <section class="contact" id="contact">
+        <h1 class="heading">contact us</h1>
+        <div class="row">
+            <!-- Image + WhatsApp -->
+            <div class="image">
+                <img src="image/contact.png" alt="Contact Image" />
+            </div>
+            <div class="whatsapp-box">
+                <a href="https://wa.me/917295084407" target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+            <!-- Form -->
+            <div class="form-container">
+                <iframe src="https://crm.sdcaresenterprises.com/forms/wtl/08170dbaea145eb0c3f1e34db81aadf3"
+                    style="width: 100%; height: 100%; min-height: 500px; border: none" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+    <!-- contact section ends -->
+    <!-- footer section stars -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Decent Learner</h3>
+                <p>home tuition , Delhi.</p>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3>contact us</h3>
+                <a href="tel:+917295084407">+91 7295084407</a>
+                <a href="mailto:shailendraict2@gmail.com" class="link">
+                    shailendraict2@gmail.com
+                </a>
+            </div>
+            <div class="box">
+                <h3>Location</h3>
+                <p>
+                    Delhi <br />
+                    sector 34 <br />
+                    6543567
+                </p>
+            </div>
+        </div>
+        <div class="credit">
+            created by <span>Shailendra Kr Bhindwar </span>| all rights are
+            reserved!
+        </div>
+    </section>
+    <!-- footer section ends -->
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- Custom JS -->
+    <script src="style.js" defer></script>
+</body>
+
+</html>
