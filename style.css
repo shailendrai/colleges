@@ -5,7 +5,7 @@
     --secondary: #01015f;
     --white: #fff;
     --black: #141414;
-    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -16,8 +16,8 @@
     outline: none;
     border: none;
     text-decoration: none;
-    text-transform: capitalize;
-    transition: all .2s linear;
+    text-transform: none;
+    transition: 0.2s ease;
 }
 
 html {
@@ -26,6 +26,7 @@ html {
     scroll-padding-top: 9rem;
     scroll-behavior: smooth;
 }
+
 
 html::-webkit-scrollbar {
     width: 1rem;
@@ -42,6 +43,8 @@ html::-webkit-scrollbar-thumb {
 section {
     padding: 5rem 7%;
 }
+
+
 
 .heading {
     position: relative;
@@ -209,21 +212,17 @@ section {
 }
 
 .header .icons div:hover {
-    color: var(--primary-color);
+    color: red;
 }
 
-#menu-btn {
-    display: none;
-}
 
 .header .login-form {
     position: absolute;
     top: 115%;
     right: -105%;
     background: var(--white);
-    box-shadow: .5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     width: 35rem;
-    box-shadow: var(--box-shadow);
     padding: 2rem;
 }
 
@@ -271,10 +270,23 @@ section {
     background: url(image/home1.png) no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative;
+}
+
+.home::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .home .content {
     max-width: 50rem;
+
+    position: relative;
+    z-index: 1;
 }
 
 .home .content h3 {
@@ -288,6 +300,7 @@ section {
     line-height: 2;
     color: var(--white);
     padding: 1rem 0;
+
 }
 
 /* ends */
@@ -640,49 +653,54 @@ section {
 /* ends */
 
 /* faqs start */
-.faqs.container{
+.faqs .container {
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 15px;
 }
-.ques{
-    background-color: #cac70c;
-    padding: 40px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: max-height .3s ease-in-out;
-}
-.ques:hover{
-    background-color: #777;
-}
-.ans{
-    max-height: 0px;
-    width: 100%;
-    overflow: hidden;
-    transition: all .3s ease-in-out;
 
-}
-.faq-list{
+.faq-list {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     gap: 10px;
 }
-.faq.active.ans{
-    max-height: 300px;
+
+.ques {
+    background-color: #cac70c;
+    padding: 20px 30px;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
 }
-.ans p{
+
+.ques:hover {
+    background-color: #777;
+    transform: translateY(-2px);
+}
+
+.ans {
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: max-height .4s ease;
+}
+
+.faq.active .ans {
+    max-height: 500px;
+}
+
+.ans p {
     background-color: #444;
     padding: 30px;
-    font-size: 30px;
+    font-size: 1.6rem;
     border-top: 1px solid var(--black);
 }
 
@@ -732,6 +750,54 @@ section {
 .contact .row form textarea {
     height: 15rem;
     resize: none;
+}
+
+
+
+
+.form-container {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.form-container iframe {
+    width: 100%;
+    height: 800px;
+    border: none;
+}
+
+
+
+/* WhatsApp Box Center */
+.whatsapp-box {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Button Style */
+.whatsapp-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #25D366;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Icon spacing */
+.whatsapp-btn i {
+    margin-right: 8px;
+}
+
+/* Hover effect */
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+    transform: translateY(-3px);
 }
 
 /* ends */
@@ -809,64 +875,92 @@ section {
     color: var(--primary-color);
 }
 
-/* ends */
 
-/* media queries */
+/* ===== MOBILE RESPONSIVE FINAL CLEAN ===== */
 
-@media (max-width:991px) {
+#menu-btn {
+    display: none;
+}
 
+/* Tablet */
+@media (max-width: 991px) {
     html {
         font-size: 55%;
     }
-
-    .header {
-        padding: 2rem 4rem;
-    }
-
-    section {
-        padding: 3rem 2rem;
-    }
-
 }
 
-@media (max-width:768px) {
+/* Mobile */
+@media (max-width: 768px) {
 
+    /* Menu icon */
     #menu-btn {
         display: inline-block;
+        font-size: 2rem;
+        cursor: pointer;
     }
 
+    /* Navbar */
     .header .navbar {
         position: absolute;
-        top: 110%;
-        right: -110%;
-        width: 30rem;
-        box-shadow: var(--box-shadow);
-        border-radius: .5rem;
+        top: 100%;
+        right: -100%;
+        width: 100%;
         background: var(--white);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease;
     }
 
     .header .navbar.active {
-        right: 2rem;
-        transition: .4s linear;
+        right: 0;
     }
 
     .header .navbar a {
-        font-size: 2rem;
-        margin: 1rem 2.5rem;
         display: block;
+        margin: 1.5rem 0;
+        font-size: 2rem;
     }
 
+    /* Login form */
+    .header .login-form {
+        width: 90%;
+        right: -100%;
+    }
+
+    .header .login-form.active {
+        right: 5%;
+    }
+
+    /* Home */
     .home .content h3 {
         font-size: 3rem;
     }
 
-    .about .container .about-content {
-        padding-left: 0;
+    .home .content p {
+        font-size: 1.4rem;
     }
 
+    /* About */
+    .about .container {
+        flex-direction: column;
+    }
+
+    .about .container .about-content {
+        padding-left: 0;
+        padding-top: 2rem;
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+    }
 }
 
-@media (max-width:450px) {
+/* Small devices */
+@media (max-width: 450px) {
     html {
         font-size: 50%;
     }
