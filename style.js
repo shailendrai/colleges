@@ -1,57 +1,57 @@
-let navbar = document.querySelector('.header .navbar');
+const navbar = document.querySelector('.header .navbar');
+const loginForm = document.querySelector('.login-form');
+const menuBtn = document.querySelector('#menu-btn');
+const loginBtn = document.querySelector('#login-btn');
 
-document.querySelector('#menu-btn').onclick = () => {
-    navbar.classList.toggle('active');
-    loginForm.classList.remove('active');
+// Close function
+function closeAll() {
+    navbar?.classList.remove('active');
+    loginForm?.classList.remove('active');
 }
 
-let loginForm = document.querySelector('.login-form');
-
-document.querySelector('#login-btn').onclick = () => {
-    loginForm.classList.toggle('active');
-    navbar.classList.remove('active');
-}
-
-window.onscroll = () => {
-    navbar.classList.remove('active');
-    loginForm.classList.remove('active');
-}
-
-var swiper = new Swiper(".review-slider", {
-    spaceBetween: 20,
-    centeredSlides: true,
-    grabCursor: true,
-    autoplay: {
-        delay: 7500,
-        disableOnInteraction: false,
-    },
-    loop: true,
-    breakpoints: {
-        0: {
-            slidesPerView: 1,
-        },
-        768: {
-            slidesPerView: 2,
-        },
-        991: {
-            slidesPerView: 3,
-        },
-    },
+// Menu toggle
+menuBtn?.addEventListener('click', () => {
+    navbar?.classList.toggle('active');
+    loginForm?.classList.remove('active');
 });
 
-const faqs = document.querySelectorAll(".faq")
+// Login toggle
+loginBtn?.addEventListener('click', () => {
+    loginForm?.classList.toggle('active');
+    navbar?.classList.remove('active');
+});
 
-faqs.forEach((faq) => {
-    faq.addEventListener("click", () => {
-        if (faq.classList.contains("active")) {
-            faq.classList.remove("active")
-        } else {
-            faq.classList.add("active")
-            faqs.forEach((otherFaq) => {
-                if (otherFaq != faq) {
-                    otherFaq.classList.remove("active")
-                }
-            })
+// Scroll close
+window.addEventListener('scroll', closeAll);
+
+// Swiper
+if (document.querySelector(".review-slider")) {
+    new Swiper(".review-slider", {
+        spaceBetween: 20,
+        centeredSlides: true,
+        grabCursor: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        loop: true,
+        breakpoints: {
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            991: { slidesPerView: 3 },
+        },
+    });
+}
+
+// FAQ accordion
+document.querySelectorAll(".faq").forEach((faq) => {
+    faq.querySelector(".ques")?.addEventListener("click", () => {
+        const isActive = faq.classList.contains("active");
+
+        document.querySelectorAll(".faq").forEach(f => f.classList.remove("active"));
+
+        if (!isActive) {
+            faq.classList.add("active");
         }
-    })
-})
+    });
+});
