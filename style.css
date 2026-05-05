@@ -768,40 +768,6 @@ section {
 }
 
 
-
-/* WhatsApp Box Center */
-.whatsapp-box {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Button Style */
-.whatsapp-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background: #25D366;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-/* Icon spacing */
-.whatsapp-btn i {
-    margin-right: 8px;
-}
-
-/* Hover effect */
-.whatsapp-btn:hover {
-    background: #1ebe5d;
-    transform: translateY(-3px);
-}
-
-/* ends */
-
 /* footer */
 
 .footer {
